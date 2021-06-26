@@ -101,7 +101,8 @@ func (s *MarginLoanService) Do(ctx context.Context, opts ...RequestOption) (res 
 	}
 	r.setFormParams(m)
 	if s.isolatedSymbol != "" {
-		r.setParam("isolatedSymbol", s.isolatedSymbol)
+		r.setParam("symbol", s.isolatedSymbol)
+		r.setParam("isIsolated", "TRUE")
 	}
 	res = new(TransactionResponse)
 	data, err := s.c.callAPI(ctx, r, opts...)
